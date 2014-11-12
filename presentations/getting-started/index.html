@@ -7,7 +7,7 @@
     <title>VAMPD - Getting Started.</title>
 
     <meta name="description" content="A toold for continuous integration on a local envrionment">
-    <meta name="author" content="Hakim El Hattab">
+    <meta name="author" content="Tim Whitney">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -63,18 +63,17 @@
         </section>
         <section>
           <h2>What is Vampd?</h2>
-          <p>VAMPD is tool to ease continuous integration by easing and standardizing local development setup.</p>
-          <p><small>VAMPD is a fork of no longer existent drupal-lamp provisioner from Newmedia.</small></p>
+          <p>VAMPD is a tool to ease continuous integration by standardizing and automating the local development setup.</p>
+          <p><small>VAMPD is a fork <a href="https://github.com/newmediadenver/drupal-lamp">drupal-lamp.</a></small></p>
         </section>
 
         <section>
           <h2>Goals of VAMPD and CI</h2>
           <ul>
-            <li>Common Development Practices</li>
-            <li>Share Repos</li>
+            <li>Promote Best Practice Drupal Development</li>
             <li>Integrate Regularly</li>
             <li>Detect Errors Quickly</li>
-            <li>Ease Local Development</li>
+            <li>Standardize Local Development</li>
           </ul>
         </section>
 
@@ -100,7 +99,7 @@
           <ul>
             <li>Vagrant/Virtual Box</li>
             <li>Reproducible Provisioner</li>
-            <li>Force Testing</li>
+            <li>Allow testing through automation</li>
           </ul>
         </section>
 
@@ -119,6 +118,7 @@
             <li>Features</li>
             <li>CINC</li>
             <li>Install profiles</li>
+            <li>drush make</li>
           </ul>
         </section>
 
@@ -314,6 +314,51 @@
           </code></pre>
         </section>
         <section>
+          <h2>Using VAMPD?</h2>
+          <h3>First time</h3>
+          <ol>
+            <li>Install vagrant, ChefDK, virtualbox and VAMPD</li>
+            <li>Install vagrant plugins</li>
+            <li>Copy and edit chef/roles/[site_name].json</li>
+            <li>vagrant up</li>
+            <li>edit /etc/hosts with your new site</li>
+            <li>visit site_name.local in your browser</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Using VAMPD Daily</h2>
+          <ol>
+            <li>Create/edit existing json file</li>
+            <li>vagrant provision with changes</li>
+            <li>dev away</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Using VAMPD on a team</h2>
+          <ol>
+            <li>Place the role file in a wiki</li>
+            <li>Copy role file to chef/roles</li>
+            <li>Pull down necessary assets (db if working on existing site</li>
+            <li>vagrant provision</li>
+            <li>edit the /etc/hosts</li>
+            <li>Visit the site in your browser</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Want to test a module out for longer than 30 mins?</h2>
+          <ol>
+            <li>Duplicate and rename example.json</li>
+            <li>vagrant ssh</li>
+            <li>Download and enable the modules to your likings</li>
+            <li>Edit the /etc/hosts</li>
+            <li>visit the site in your browser</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Is VAMPD missing something you need?</h2>
+          <h3>Let us know in the issue queue!</h3>
+        </section>
+        <section>
           <h2>VAMPD Team</h2>
           <ul>
             <li>Tim Whitney (timodwhit)</li>
@@ -352,7 +397,6 @@
         </section>
 
       </div>
-
     </div>
 
     <script src="../../bower_components/reveal.js/lib/js/head.min.js"></script>
