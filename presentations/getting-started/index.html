@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>VAMPD - Getting Started.</title>
+
+    <meta name="description" content="A toold for continuous integration on a local envrionment">
+    <meta name="author" content="Tim Whitney">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="../../bower_components/reveal.js/css/reveal.min.css">
+    <link rel="stylesheet" href="../../bower_components/reveal.js/css/theme/night.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="../../bower_components/reveal.js/lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = '../../bower_components/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>VAMPD</h1>
+          <h3>Local Continuous Integration Made Easy</h3>
+          <p>
+            <small>Created by the VAMPD Team</small>
+          </p>
+        </section>
+
+        <section>
+          <h2>What is Continuous Integration?</h2>
+          <p>
+           "Continuous Integration (CI) is a <span class="fragment highlight-blue">development practice</span> that requires developers to integrate code into a <span class="fragment highlight-blue">shared repository</span> several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early.
+          </p>
+          <p>
+            By <span class="fragment highlight-blue">integrating regularly</span>, you can  <span class="fragment highlight-blue">detect errors quickly</span>, and locate them <span class="fragment highlight-blue">more easily.</span>"
+          </p>
+          <p>
+            -- <a href="http://www.thoughtworks.com/continuous-integration">Thoughtworks.com </a>
+        </section>
+        <section>
+          <h2>What is Vampd?</h2>
+          <p>VAMPD is a tool to ease continuous integration by standardizing and automating the local development setup.</p>
+          <p><small>VAMPD is a fork <a href="https://github.com/newmediadenver/drupal-lamp">drupal-lamp.</a></small></p>
+        </section>
+
+        <section>
+          <h2>Goals of VAMPD and CI</h2>
+          <ul>
+            <li>Promote Best Practice Drupal Development</li>
+            <li>Integrate Regularly</li>
+            <li>Detect Errors Quickly</li>
+            <li>Standardize Local Development</li>
+          </ul>
+        </section>
+
+        <!-- Example of nested vertical slides -->
+        <section>
+          <h2>Current Issue with CI</h2>
+          <p>
+            Developers are forgotten.
+          </p>
+        </section>
+
+        <section>
+          <h2>Why?</h2>
+          <ul>
+            <li>Different OS</li>
+            <li>Different Jobs</li>
+            <li>Server admins don't work there</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>How do we address this?</h2>
+          <ul>
+            <li>Vagrant/Virtual Box</li>
+            <li>Reproducible Provisioner</li>
+            <li>Allow testing through automation</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>More importantly</h2>
+          <p>
+            Make our code reproducible!
+          </p>
+          <p><em>Know what will happen</em></p>
+        </section>
+
+        <section>
+          <h2>How to do that in Drupal?</h2>
+          <ul>
+            <li>hook_update_N</li>
+            <li>Features</li>
+            <li>CINC</li>
+            <li>Install profiles</li>
+            <li>drush make</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What about VAMPD?</h2>
+          <ul>
+            <li>Supports all of this</li>
+            <li>Forces most of it</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Starter Site</h2>
+          <pre><code data-trim contenteditable>
+{
+  "name": "example",
+  "description": "The base role that gets added to every machine.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+   "drupal": {
+      "sites": {
+        "example": {
+          "active": true,
+          "deploy": {
+            "action": ["deploy", "install"]
+          },
+          "drupal": {
+            "settings": {
+              "docroot": ""
+            }
+          }
+        }
+      }
+    }
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Interesting?</h2>
+          <p>
+            Not Really.
+          </p>
+        </section>
+
+
+        <section>
+          <h2>Install Profile</h2>
+          <pre><code data-trim contenteditable>
+{
+  "name": "lightning",
+  "description": "This lightning role uses make and an install profile to install the lightning profile.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "lightning": {
+          "active": true,
+          "deploy": {
+            "action": ["deploy", "install"]
+          },
+          "drush_make": {
+            "api": "2",
+            "files": {
+              "default": "build-lightning.make"
+            },
+            "template": false
+          },
+          "drupal": {
+            "settings": {
+              "profile": "lightning",
+              "docroot": ""
+            }
+          },
+          "repository": {
+            "host": "drupal.org",
+            "uri": "http://git.drupal.org/project/lightning.git",
+            "revision": "7.x-1.x"
+          }
+        }
+      }
+    }
+  }
+}
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Interesting?</h2>
+          <p> Pretty Interesting, but let's do more</p>
+        </section>
+
+                <section>
+          <h2>Templated Install Profile</h2>
+          <pre><code data-trim contenteditable>
+{
+  "name": "lightning",
+  "description": "This lightning role uses make and an install profile to install the lightning profile.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "lightning": {
+          "active": true,
+          "deploy": {
+            "action": ["deploy", "install"]
+          },
+          "drush_make": {
+            "api": "2",
+            "files": {
+              "default": "build-lightning.make",
+              "core": "drupal-org-core.make"
+            },
+            "template": true
+          },
+          "drupal": {
+            "settings": {
+              "profile": "lightning",
+              "docroot": ""
+            }
+          },
+          "repository": {
+            "host": "github.com",
+            "uri": "git@github.com:timodwhit/lightning.git",
+            "revision": "7.x-1.x"
+          }
+        }
+      }
+    }
+  }
+}
+          </code></pre>
+          <a href="https://github.com/vampd/drupal/blob/master/templates/default/build.make.erb">Template</a>
+        </section>
+
+        <section>
+          <h2>Pretty crazy... </h2>
+          <p>
+            But we can still do more.
+          </p>
+
+        </section>
+
+        <section>
+          <h2>Exisiting Make Site With a DB to import</h2>
+          <pre><code data-trim contenteditable>
+{
+  "name": "lightning",
+  "description": "This lightning role uses make and an install profile to install the lightning profile.",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {
+    "drupal": {
+      "sites": {
+        "lightning": {
+          "active": true,
+          "deploy": {
+            "action": ["deploy", "import", "update"]
+          },
+          "drush_make": {
+            "api": "2",
+            "files": {
+              "default": "build-lightning.make",
+              "core": "drupal-org-core.make"
+            },
+            "template": true
+          },
+          "drupal": {
+            "settings": {
+              "profile": "lightning",
+              "docroot": ""
+            },
+            "db_file": "/vagrant/sites/lightning/raw_db.sql"
+          },
+          "repository": {
+            "host": "github.com",
+            "uri": "git@github.com:timodwhit/lightning.git",
+            "revision": "7.x-1.x"
+          }
+        }
+      }
+    }
+  }
+}
+          </code></pre>
+        </section>
+        <section>
+          <h2>Using VAMPD?</h2>
+          <h3>First time</h3>
+          <ol>
+            <li>Install vagrant, ChefDK, virtualbox and VAMPD</li>
+            <li>Install vagrant plugins</li>
+            <li>Copy and edit chef/roles/[site_name].json</li>
+            <li>vagrant up</li>
+            <li>edit /etc/hosts with your new site</li>
+            <li>visit site_name.local in your browser</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Using VAMPD Daily</h2>
+          <ol>
+            <li>Create/edit existing json file</li>
+            <li>vagrant provision with changes</li>
+            <li>dev away</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Using VAMPD on a team</h2>
+          <ol>
+            <li>Place the role file in a wiki</li>
+            <li>Copy role file to chef/roles</li>
+            <li>Pull down necessary assets (db if working on existing site</li>
+            <li>vagrant provision</li>
+            <li>edit the /etc/hosts</li>
+            <li>Visit the site in your browser</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Want to test a module out for longer than 30 mins?</h2>
+          <ol>
+            <li>Duplicate and rename example.json</li>
+            <li>vagrant ssh</li>
+            <li>Download and enable the modules to your likings</li>
+            <li>Edit the /etc/hosts</li>
+            <li>visit the site in your browser</li>
+          </ol>
+        </section>
+        <section>
+          <h2>Is VAMPD missing something you need?</h2>
+          <h3>Let us know in the issue queue!</h3>
+        </section>
+        <section>
+          <h2>VAMPD Team</h2>
+          <ul>
+            <li>Tim Whitney (timodwhit)</li>
+            <li>Alex Knoll (arknoll)</li>
+            <li>Chris Caldwell (chrisolof)</li>
+            <li>Ryan McVeigh (rmcveigh)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Other Contributors</h2>
+          <ul style="width:50%; float: left; margin:0;">
+            <li>Kevin Bridges (cyberswat)</li>
+            <li>Rick Manelius (rickmanelius)</li>
+            <li>Caleb Thorne (draenen)</li>
+            <li>Bryon Urbanec (b-ry)</li>
+            <li>Tanner Ferguson (tannerjfco)</li>
+          </ul>
+          <ul style="width:50%; float: right; margin: 0;">
+            <li>Ryan Blyth (ryanblyth)</li>
+            <li>znerol</li>
+            <li>Jordan Graham (jordanlgraham)</li>
+            <li>Chris Lee (speedytwenty)</li>
+            <li>Kevin Kaland (wizonesolutions)</li>
+          </ul>
+        </section>
+        <section>
+          <h2>And...</h2>
+        </section>
+        <section>
+          <h2>It's Open Source</h2>
+          <p>Because we care about the developer and the deployment!</p>
+        </section>
+        <section>
+          <h1>THE END</h1>
+          <h3>By Tim Whitney (timodwhit)</h3>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="../../bower_components/reveal.js/lib/js/head.min.js"></script>
+    <script src="../../bower_components/reveal.js/js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: '../../bower_components/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../bower_components/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: '../../bower_components/reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: '../../bower_components/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: '../../bower_components/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
