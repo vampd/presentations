@@ -44,98 +44,160 @@
       <div class="slides">
         <section>
           <h1>VAMPD</h1>
-          <h3>Local Continuous Integration Made Easy</h3>
+          <h3>Automated Local Dev Made Easy</h3>
           <p>
             <small>Created by the VAMPD Team</small>
           </p>
         </section>
 
         <section>
-          <h2>What is Continuous Integration?</h2>
-          <p>
-           "Continuous Integration (CI) is a <span class="fragment highlight-blue">development practice</span> that requires developers to integrate code into a <span class="fragment highlight-blue">shared repository</span> several times a day. Each check-in is then verified by an automated build, allowing teams to detect problems early.
-          </p>
-          <p>
-            By <span class="fragment highlight-blue">integrating regularly</span>, you can  <span class="fragment highlight-blue">detect errors quickly</span>, and locate them <span class="fragment highlight-blue">more easily.</span>"
-          </p>
-          <p>
-            -- <a href="http://www.thoughtworks.com/continuous-integration">Thoughtworks.com </a>
-        </section>
-        <section>
-          <h2>What is Vampd?</h2>
-          <p>VAMPD is a tool to ease continuous integration by standardizing and automating the local development setup.</p>
+          <h2>What is VAMPD?</h2>
+          <p>Virtualized Apache MySQL PHP Drupal</p>
+          <p>VAMPD is a tool to standardize and automate a local dev environment</p>
           <p><small>VAMPD is a fork <a href="https://github.com/newmediadenver/drupal-lamp">drupal-lamp.</a></small></p>
         </section>
 
         <section>
-          <h2>Goals of VAMPD and CI</h2>
+          <h2>Another tool, why bro? Why?</h2>
+        </section>
+
+        <section>
+          <h2>Local Dev Currently</h2>
           <ul>
-            <li>Promote Best Practice Drupal Development</li>
-            <li>Integrate Regularly</li>
-            <li>Detect Errors Quickly</li>
-            <li>Standardize Local Development</li>
+            <li>Custom AMP Stacks (WAMP, MAMP, LAMP, etc)</li>
+            <li>Cloud solutions (Pantheon, Commerce guys, etc)</li>
+            <li>Disparity between local and live.</li>
           </ul>
         </section>
 
-        <!-- Example of nested vertical slides -->
         <section>
-          <h2>Current Issue with CI</h2>
+          <h2>Essentially, a Death Match</h2>
+          <img src="images/celeb-death-match.jpg" alt="A death match a day.">
+          <h3>Coming to a Machine near you!</h3>
           <p>
-            Developers are forgotten.
+            <small><a href="http://www.fanpop.com/clubs/celebrity-deathmatch/images/2224143/title/nick-diamond-johnny-gomez-wallpaper">Source</a></small>
           </p>
         </section>
 
         <section>
-          <h2>Why?</h2>
-          <ul>
-            <li>Different OS</li>
-            <li>Different Jobs</li>
-            <li>Server admins don't work there</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>How do we address this?</h2>
-          <ul>
-            <li>Vagrant/Virtual Box</li>
-            <li>Reproducible Provisioner</li>
-            <li>Allow testing through automation</li>
-          </ul>
-        </section>
-
-        <section>
-          <h2>More importantly</h2>
+          <h2>Local vs. Live</h2>
+          <img src="images/prod-v-live.jpg" alt="Does it really work? We'll see">
           <p>
-            Make our code reproducible!
+            <small><a href="http://www.developermemes.com/wp-content/uploads/2013/12/Defect-In-Production-Works-On-My-Machine.jpg">Source</a></small>
           </p>
-          <p><em>Know what will happen</em></p>
         </section>
 
         <section>
-          <h2>How to do that in Drupal?</h2>
+          <h2>Setting Up Different Machines</h2>
+          <img src="images/rube-goldberg.jpg" alt="Does it really work? We'll see">
+          <p>
+            <small><a href="http://theshortwave.blogspot.com/2011/11/rube-goldberg-machines.html">Source</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>Server Admins vs Developers</h2>
+          <img src="images/ops-problem.jpg" alt="Does it really work? We'll see">
+          <p>
+            <small><a href="http://www.developermemes.com/wp-content/uploads/2013/12/Worked-Fine-In-Dev-Ops-Problem-Now.jpg">Source</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>How do we solve this?</h2>
           <ul>
-            <li>hook_update_N</li>
-            <li>Features</li>
-            <li>CINC</li>
-            <li>Install profiles</li>
-            <li>drush make</li>
+            <li>Standardize</li>
+            <li>Automate</li>
           </ul>
         </section>
 
         <section>
-          <h2>What about VAMPD?</h2>
+          <h2>Automation <br />+ <br />Standardization <br />= </h2>
+        </section>
+
+        <section>
+          <h2>High Reproducibility</h2>
+          <img src="images/rabbits.jpg" alt="Does it really work? We'll see">
+          <p>
+            <small><a href="http://www.vitalmx.com/forums/Non-Moto,21/Rabbits,1250233">Source</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>What makes VAMPD?</h2>
           <ul>
-            <li>Supports all of this</li>
-            <li>Forces most of it</li>
+            <li>Config Files</li>
+            <li>Headless Virtualbox</li>
+            <li>Vagrant</li>
+            <li>Chef</li>
+            <li>Drupal (Backdrop)</li>
           </ul>
+        </section>
+
+        <section>
+          <h2>How does VAMPD help?</h2>
+          <ul>
+            <li>Complete Parity</li>
+            <li>Cross Platform</li>
+            <li>Common Interface</li>
+            <li>Forces Best Practices</li>
+            <li>Removes levels of difficulty</li>
+            <li>Highly Flexible</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>What does VAMPD do?</h2>
+          <ul>
+            <li>Sets up the Server</li>
+            <li>Deploys</li>
+            <li>Installs</li>
+            <li>Imports</li>
+            <li>Updates</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Deploys</h2>
+          <p>Places your code where it belongs</p>
+          <ul>
+            <li>Creates a database</li>
+            <li>Pulls git repo at a revision</li>
+            <li>Templated: <code>drush make</code> <small><em>(optional)</em></small></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Installs</h2>
+          <p>Installs your site</p>
+          <ul>
+            <li><code>drush si ...</code></li>
+            <li>Custom templated settings.php with your settings</li>
+            <li>Allows for additional settings.php</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Imports</h2>
+          <p>Imports an existing database.</p>
+        </section>
+
+        <section>
+          <h2>Updates</h2>
+          <p><code>drush updb</code></p>
+        </section>
+
+        <section>
+          <h2>What does this actually look like?</h2>
         </section>
 
         <section>
           <h2>Starter Site</h2>
+          <p>Basic Drupal 7 Core Standard install pulling from Github</p>
           <pre><code data-trim contenteditable>
 {
   "name": "example",
-  "description": "The base role that gets added to every machine.",
+  "description": "The example role that gets added to every machine.",
   "chef_type": "role",
   "json_class": "Chef::Role",
   "default_attributes": {},
@@ -162,111 +224,7 @@
 
         <section>
           <h2>Interesting?</h2>
-          <p>
-            Not Really.
-          </p>
-        </section>
-
-
-        <section>
-          <h2>Install Profile</h2>
-          <pre><code data-trim contenteditable>
-{
-  "name": "lightning",
-  "description": "This lightning role uses make and an install profile to install the lightning profile.",
-  "chef_type": "role",
-  "json_class": "Chef::Role",
-  "default_attributes": {},
-  "override_attributes": {
-    "drupal": {
-      "sites": {
-        "lightning": {
-          "active": true,
-          "deploy": {
-            "action": ["deploy", "install"]
-          },
-          "drush_make": {
-            "api": "2",
-            "files": {
-              "default": "build-lightning.make"
-            },
-            "template": false
-          },
-          "drupal": {
-            "settings": {
-              "profile": "lightning",
-              "docroot": ""
-            }
-          },
-          "repository": {
-            "host": "drupal.org",
-            "uri": "http://git.drupal.org/project/lightning.git",
-            "revision": "7.x-1.x"
-          }
-        }
-      }
-    }
-  }
-}
-          </code></pre>
-        </section>
-
-        <section>
-          <h2>Interesting?</h2>
           <p> Pretty Interesting, but let's do more</p>
-        </section>
-
-                <section>
-          <h2>Templated Install Profile</h2>
-          <pre><code data-trim contenteditable>
-{
-  "name": "lightning",
-  "description": "This lightning role uses make and an install profile to install the lightning profile.",
-  "chef_type": "role",
-  "json_class": "Chef::Role",
-  "default_attributes": {},
-  "override_attributes": {
-    "drupal": {
-      "sites": {
-        "lightning": {
-          "active": true,
-          "deploy": {
-            "action": ["deploy", "install"]
-          },
-          "drush_make": {
-            "api": "2",
-            "files": {
-              "default": "build-lightning.make",
-              "core": "drupal-org-core.make"
-            },
-            "template": true
-          },
-          "drupal": {
-            "settings": {
-              "profile": "lightning",
-              "docroot": ""
-            }
-          },
-          "repository": {
-            "host": "github.com",
-            "uri": "git@github.com:timodwhit/lightning.git",
-            "revision": "7.x-1.x"
-          }
-        }
-      }
-    }
-  }
-}
-          </code></pre>
-          <a href="https://github.com/vampd/drupal/blob/master/templates/default/build.make.erb">Template</a>
-        </section>
-
-        <section>
-          <h2>Pretty crazy... </h2>
-          <p>
-            But we can still do more.
-          </p>
-
         </section>
 
         <section>
@@ -313,6 +271,29 @@
 }
           </code></pre>
         </section>
+
+        <section>
+          <h2>What else can VAMPD do?</h2>
+          <p>If there is a chef recipe, it can do it. If not, write one.</p>
+          <ul>
+            <li>Solr Server</li>
+            <li>Dev Tools: Codesniff, xdebug, zsh, etc.</li>
+            <li>Frontend tasks: Grunt, Bundler, npm, and more</li>
+            <li>And more...</li>
+          </ul>
+        </section>
+
+        <section>
+          <img src="images/wat.jpg" alt="Howdaheck?">
+          <p>
+            <small><a href="http://knowyourmeme.com/photos/173589-wat">Source</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>Exactly.</h2>
+        </section>
+
         <section>
           <h2>Using VAMPD?</h2>
           <h3>First time</h3>
@@ -325,39 +306,42 @@
             <li>visit site_name.local in your browser</li>
           </ol>
         </section>
+
         <section>
-          <h2>Using VAMPD Daily</h2>
-          <ol>
-            <li>Create/edit existing json file</li>
-            <li>vagrant provision with changes</li>
-            <li>dev away</li>
-          </ol>
+          <h2>or...</h2>
         </section>
+
         <section>
-          <h2>Using VAMPD on a team</h2>
-          <ol>
-            <li>Place the role file in a wiki</li>
-            <li>Copy role file to chef/roles</li>
-            <li>Pull down necessary assets (db if working on existing site</li>
-            <li>vagrant provision</li>
-            <li>edit the /etc/hosts</li>
-            <li>Visit the site in your browser</li>
-          </ol>
+          <h2>Use the install script</h2>
+          <img src="images/automate.jpg" alt="Did you really think you would need to install all dem things der?">
+          <p>
+            <small><a href="http://knowyourmeme.com/photos/173589-wat">Source</a></small>
+          </p>
         </section>
+
         <section>
-          <h2>Want to test a module out for longer than 30 mins?</h2>
-          <ol>
-            <li>Duplicate and rename example.json</li>
-            <li>vagrant ssh</li>
-            <li>Download and enable the modules to your likings</li>
-            <li>Edit the /etc/hosts</li>
-            <li>visit the site in your browser</li>
-          </ol>
+          <h2>JSON is scary!</h2>
+          <img src="images/json.png" alt="Come out, come out wherever you are? Setting!">
+          <p>
+            <small><a href="http://villains.wikia.com/wiki/Jason_Voorhees">Source</a></small>
+          </p>
         </section>
+
+        <section>
+          <h2>Yeoman to the Rescue!</h2>
+          <code>npm install -g generator-vampd</code>
+        </section>
+
+        <section>
+          <h2>Live Demos!</h2>
+          <h3>Cuz they never fail!</h3>
+        </section>
+
         <section>
           <h2>Is VAMPD missing something you need?</h2>
           <h3>Let us know in the issue queue!</h3>
         </section>
+
         <section>
           <h2>VAMPD Team</h2>
           <ul>
